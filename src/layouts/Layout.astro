@@ -1,15 +1,61 @@
+---
+import '../styles/global.css';
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="color-scheme" content="light dark" />
+		<script is:inline>
+			document.documentElement.classList.add('has-scroll-anim');
+			try {
+				const stored = localStorage.getItem('color-scheme');
+				if (stored === 'light' || stored === 'dark') {
+					document.querySelector('meta[name="color-scheme"]').content = stored;
+				}
+			} catch {}
+		</script>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Adam Ait Oulahiane</title>
 	</head>
-	<body>
+	<body class="bg-neutral-50 text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-100">
 		<slot />
+		<script>
+			const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			const animatedElements = document.querySelectorAll<HTMLElement>('[data-animate]');
+
+			if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (!entry.isIntersecting) return;
+							const el = entry.target as HTMLElement;
+							const animation = el.dataset.animate || 'animate__fadeInUp';
+							if (el.dataset.animateDelay) {
+								el.style.animationDelay = el.dataset.animateDelay;
+							}
+							el.classList.add('animate__animated', animation);
+							observer.unobserve(el);
+						});
+					},
+					{ threshold: 0.15 }
+				);
+
+				animatedElements.forEach((el) => observer.observe(el));
+			} else {
+				document.documentElement.classList.remove('has-scroll-anim');
+			}
+		</script>
 	</body>
 </html>
 
