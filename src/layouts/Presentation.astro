@@ -1,0 +1,62 @@
+<section
+	id="presentation-container"
+	data-animate="animate__fadeInUp"
+	class="mx-auto max-w-3xl scroll-mt-20 border-t border-neutral-200 px-6 py-20 dark:border-neutral-800"
+>
+	<div class="flex flex-col gap-8">
+		<header class="flex flex-col gap-2">
+			<p class="text-xs font-medium tracking-widest text-neutral-500 uppercase dark:text-neutral-400">
+				À propos
+			</p>
+			<h2 class="text-2xl font-medium tracking-tight text-neutral-900 sm:text-3xl dark:text-neutral-100">
+				Présentation
+			</h2>
+		</header>
+
+		<div class="space-y-4 text-base leading-relaxed text-neutral-600 dark:text-neutral-400">
+			<p>
+				Bonjour, moi c'est Adam. Je suis développeur web et je m'intéresse aux réseaux et aux systèmes.
+			</p>
+			<p>
+				J'ai toujours aimé comprendre comment les objets du quotidien qui nous entourent fonctionnent.
+				Aujourd'hui, je m'occupe de concevoir ces systèmes qui m'intriguaient tant.
+			</p>
+			<p>
+				Par exemple, je conçois mes propres outils pour me faciliter le quotidien à l'école, notamment une
+				application web qui centralise mes outils étudiants grâce à des API et des scripts d'automatisation.
+			</p>
+			<p>
+				Je recherche actuellement un stage en développement web/app ou DevOps qui pourra déboucher sur une
+				alternance, afin de mettre mes compétences en pratique et de continuer à apprendre en conditions réelles.
+			</p>
+			<slot />
+		</div>
+
+		<dl class="grid grid-cols-1 gap-4 border-t border-neutral-200 pt-8 sm:grid-cols-3 dark:border-neutral-800">
+			<div>
+				<dt class="text-xs font-medium tracking-wider text-neutral-500 uppercase dark:text-neutral-400">
+					Poste recherché
+				</dt>
+				<dd class="mt-1 text-sm font-medium text-neutral-900 dark:text-neutral-100">
+					Dev Web/App · DevOps
+				</dd>
+			</div>
+			<div>
+				<dt class="text-xs font-medium tracking-wider text-neutral-500 uppercase dark:text-neutral-400">
+					Localisation
+				</dt>
+				<dd class="mt-1 text-sm font-medium text-neutral-900 dark:text-neutral-100">
+					Lens · Arras, Douai, Lille
+				</dd>
+			</div>
+			<div>
+				<dt class="text-xs font-medium tracking-wider text-neutral-500 uppercase dark:text-neutral-400">
+					Disponibilité
+				</dt>
+				<dd class="mt-1 text-sm font-medium text-neutral-900 dark:text-neutral-100">
+					Stage puis alternance
+				</dd>
+			</div>
+		</dl>
+	</div>
+</section>
